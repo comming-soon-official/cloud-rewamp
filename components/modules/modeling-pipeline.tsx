@@ -210,7 +210,7 @@ interface ChartOptions {
             boxPadding: number
             titleFont: {
                 size: number
-                weight: string
+                weight: 'bold'
             }
             bodyFont: {
                 size: number
@@ -222,7 +222,7 @@ interface ChartOptions {
     }
     scales: {
         x: {
-            type: string
+            type: 'category'
             grid: {
                 color: string
             }
@@ -239,12 +239,12 @@ interface ChartOptions {
                 }
                 font: {
                     size: number
-                    weight: string
+                    weight: 'normal'
                 }
             }
         }
         y: {
-            type: string
+            type: 'linear'
             grid: {
                 color: string
             }
@@ -299,7 +299,7 @@ const commonOptions: ChartOptions = {
     },
     scales: {
         x: {
-            type: 'category',
+            type: 'category' as const,
             grid: {
                 color: 'rgba(255, 255, 255, 0.1)'
             },
@@ -318,7 +318,7 @@ const commonOptions: ChartOptions = {
             }
         },
         y: {
-            type: 'linear',
+            type: 'linear' as const,
             grid: {
                 color: 'rgba(255, 255, 255, 0.1)'
             },
@@ -326,7 +326,7 @@ const commonOptions: ChartOptions = {
                 color: '#a1a1aa'
             }
         }
-    }
+    } as const
 }
 
 export default function ModelingPipeline() {
@@ -572,6 +572,7 @@ export default function ModelingPipeline() {
                                                         y: {
                                                             ...commonOptions
                                                                 .scales.y,
+                                                            type: 'linear' as const,
                                                             title: {
                                                                 display: true,
                                                                 text: 'Loss',
@@ -582,7 +583,7 @@ export default function ModelingPipeline() {
                                                                 },
                                                                 font: {
                                                                     size: 12,
-                                                                    weight: 'normal'
+                                                                    weight: 'normal' as const
                                                                 }
                                                             }
                                                         }
@@ -647,6 +648,7 @@ export default function ModelingPipeline() {
                                                         y: {
                                                             ...commonOptions
                                                                 .scales.y,
+                                                            type: 'linear' as const,
                                                             min: 0.4,
                                                             max: 1,
                                                             title: {
@@ -659,7 +661,7 @@ export default function ModelingPipeline() {
                                                                 },
                                                                 font: {
                                                                     size: 12,
-                                                                    weight: 'normal'
+                                                                    weight: 'normal' as const
                                                                 }
                                                             }
                                                         }
