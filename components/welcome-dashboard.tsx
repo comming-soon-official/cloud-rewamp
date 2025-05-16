@@ -41,29 +41,29 @@ export default function WelcomeDashboard() {
                 <Card className="border-zinc-800 bg-zinc-900">
                     <CardHeader className="pb-2">
                         <CardTitle className="text-lg font-medium text-white">
-                            Recent Projects
+                            Bias and Debias Techniques
                         </CardTitle>
                         <CardDescription>
-                            Your recently accessed projects
+                            Summaries of bias detection and debias methods
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-3">
                             {[
                                 {
-                                    name: 'DeepFake Detector',
-                                    date: 'Updated 2 hours ago',
-                                    type: 'Image Classification'
+                                    name: 'Data Distribution Analysis',
+                                    date: 'Last checked: 2 hours ago',
+                                    type: 'Bias Detection'
                                 },
                                 {
-                                    name: 'Sentiment Analyzer',
-                                    date: 'Updated yesterday',
-                                    type: 'NLP'
+                                    name: 'Fairness Constraints',
+                                    date: 'Last applied: yesterday',
+                                    type: 'Debias Method'
                                 },
                                 {
-                                    name: 'Fraud Detection',
-                                    date: 'Updated 3 days ago',
-                                    type: 'Tabular'
+                                    name: 'Adversarial Debiasing',
+                                    date: 'Last updated: 3 days ago',
+                                    type: 'Debias Method'
                                 }
                             ].map((project, i) => (
                                 <div
@@ -93,7 +93,7 @@ export default function WelcomeDashboard() {
                             className="mt-3 w-full justify-between"
                         >
                             <span className="text-white">
-                                View all projects
+                                View all bias techniques
                             </span>
                             <ArrowRight className="h-4 w-4" />
                         </Button>
@@ -232,7 +232,7 @@ export default function WelcomeDashboard() {
                                 Analytics Overview
                             </CardTitle>
                             <CardDescription>
-                                Summary of your AI models and security metrics
+                                Summary of bias detection and mitigation metrics
                             </CardDescription>
                         </div>
                         <Tabs defaultValue="week" className="w-[240px]">
@@ -248,29 +248,32 @@ export default function WelcomeDashboard() {
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {[
                             {
-                                name: 'Active Models',
-                                value: '12',
+                                name: 'Protected Attributes',
+                                value: '8',
                                 change: '+2',
-                                up: true
+                                up: true,
+                                neutral: true
                             },
                             {
-                                name: 'Security Alerts',
-                                value: '3',
-                                change: '-5',
-                                up: false
-                            },
-                            {
-                                name: 'Avg. Accuracy',
-                                value: '87.4%',
-                                change: '+1.2%',
-                                up: true
-                            },
-                            {
-                                name: 'Attack Attempts',
-                                value: '28',
-                                change: '+7',
+                                name: 'Bias Alerts',
+                                value: '5',
+                                change: '+3',
                                 up: true,
                                 bad: true
+                            },
+                            {
+                                name: 'Fairness Score',
+                                value: '82.3%',
+                                change: '+4.6%',
+                                up: true,
+                                good: true
+                            },
+                            {
+                                name: 'Attribute Disparities',
+                                value: '3',
+                                change: '-2',
+                                up: false,
+                                good: true
                             }
                         ].map((stat, i) => (
                             <div
@@ -285,11 +288,9 @@ export default function WelcomeDashboard() {
                                 </div>
                                 <div
                                     className={`mt-1 flex items-center text-sm ${
-                                        stat.up
-                                            ? stat.bad
-                                                ? 'text-red-400'
-                                                : 'text-green-400'
-                                            : stat.bad
+                                        stat.neutral
+                                            ? 'text-blue-400'
+                                            : stat.good
                                             ? 'text-green-400'
                                             : 'text-red-400'
                                     }`}
@@ -297,7 +298,7 @@ export default function WelcomeDashboard() {
                                     {stat.change}{' '}
                                     <span className="ml-1 text-xs text-zinc-400">
                                         {stat.up ? 'increase' : 'decrease'} from
-                                        last week
+                                        last assessment
                                     </span>
                                 </div>
                             </div>
@@ -307,25 +308,25 @@ export default function WelcomeDashboard() {
                     <div className="mt-6 h-[300px] rounded-md border border-zinc-800 bg-zinc-950 p-4">
                         <div className="mb-4 flex items-center justify-between">
                             <h3 className="font-medium text-white">
-                                Model Performance Trends
+                                Bias Mitigation Trends
                             </h3>
                             <div className="flex items-center gap-4">
                                 <div className="flex items-center gap-2">
                                     <div className="h-3 w-3 rounded-full bg-pink-600"></div>
                                     <span className="text-sm text-zinc-400">
-                                        Accuracy
+                                        Fairness Score
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <div className="h-3 w-3 rounded-full bg-blue-600"></div>
                                     <span className="text-sm text-zinc-400">
-                                        Precision
+                                        Bias Alerts
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <div className="h-3 w-3 rounded-full bg-purple-600"></div>
                                     <span className="text-sm text-zinc-400">
-                                        Recall
+                                        Attribute Disparities
                                     </span>
                                 </div>
                             </div>
@@ -335,7 +336,7 @@ export default function WelcomeDashboard() {
                             <div className="flex h-full items-center justify-center">
                                 <div className="text-center text-zinc-400">
                                     <p className="text-white">
-                                        Performance trend visualization
+                                        Bias mitigation trend visualization
                                     </p>
                                     <p className="text-sm">
                                         (Chart would be rendered here)
